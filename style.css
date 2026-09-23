@@ -2,35 +2,53 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:'Poppins',sans-serif;
+}
+
+:root{
+--bg:#f8f4ea;
+--card:#ffffff;
+--text:#222222;
+--gold:#ffd54f;
+--orange:#ff9800;
+--shadow:0 8px 25px rgba(0,0,0,.08);
 }
 
 body{
-background:#f8f4ea;
-color:#222;
+background:var(--bg);
+color:var(--text);
 padding-bottom:90px;
 }
 
+/* HERO */
+
 .hero{
-background:linear-gradient(135deg,#ffd54f,#ff9800);
+background:linear-gradient(
+135deg,
+#ffd54f,
+#ffb300,
+#ff9800
+);
 text-align:center;
-padding:30px 20px 40px;
-border-bottom-left-radius:30px;
-border-bottom-right-radius:30px;
+padding:25px 20px 35px;
+border-bottom-left-radius:35px;
+border-bottom-right-radius:35px;
 position:relative;
+box-shadow:var(--shadow);
 }
 
-#themeBtn{
+.theme-btn{
 position:absolute;
-right:20px;
-top:20px;
+top:15px;
+right:15px;
 width:45px;
 height:45px;
 border:none;
 border-radius:50%;
-cursor:pointer;
-font-size:18px;
 background:white;
+font-size:18px;
+cursor:pointer;
+box-shadow:var(--shadow);
 }
 
 .gurudev{
@@ -38,19 +56,20 @@ width:120px;
 height:120px;
 border-radius:50%;
 object-fit:cover;
-border:4px solid white;
-box-shadow:0 5px 20px rgba(0,0,0,.2);
+border:5px solid white;
+box-shadow:var(--shadow);
 }
 
 .hero h1{
 margin-top:15px;
-font-size:32px;
+font-size:28px;
+font-weight:700;
 }
 
 .hero h2{
 margin-top:8px;
 font-size:24px;
-color:#fff;
+color:white;
 }
 
 .hero p{
@@ -58,35 +77,46 @@ margin-top:8px;
 font-size:15px;
 }
 
+/* MAIN */
+
 main{
-max-width:700px;
+max-width:500px;
 margin:auto;
-padding:20px;
+padding:20px 15px;
 }
 
 .deity-card{
-background:white;
-padding:25px;
-border-radius:25px;
-box-shadow:0 5px 20px rgba(0,0,0,.08);
+background:var(--card);
+border-radius:28px;
+padding:20px;
 text-align:center;
+box-shadow:var(--shadow);
+margin-top:-15px;
 }
 
 .deity-img{
-width:320px;
+width:100%;
+max-width:320px;
 height:320px;
-max-width:100%;
 object-fit:cover;
-border-radius:25px;
+border-radius:24px;
+display:block;
+margin:auto;
+}
+
+.deity-card h3{
+margin-top:18px;
+margin-bottom:12px;
+font-size:20px;
 }
 
 select{
 width:100%;
 padding:15px;
-margin-top:20px;
-border-radius:12px;
+border-radius:14px;
 border:1px solid #ddd;
 font-size:16px;
+outline:none;
 }
 
 .start-btn{
@@ -94,64 +124,124 @@ width:100%;
 margin-top:15px;
 padding:16px;
 border:none;
-border-radius:12px;
-background:linear-gradient(135deg,#d4af37,#ff9800);
+border-radius:14px;
+background:linear-gradient(
+135deg,
+#ff9800,
+#ff6f00
+);
 color:white;
 font-size:18px;
-font-weight:bold;
+font-weight:600;
 cursor:pointer;
 }
+
+/* STATS */
 
 .stats{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:15px;
-margin-top:20px;
+margin-top:18px;
 }
 
-.stat{
+.stat-card{
 background:white;
 padding:20px;
 border-radius:20px;
 text-align:center;
-box-shadow:0 5px 15px rgba(0,0,0,.08);
+box-shadow:var(--shadow);
 }
 
-.stat h3{
-font-size:30px;
+.stat-number{
+font-size:28px;
+font-weight:700;
 color:#ff9800;
 }
+
+.stat-title{
+margin-top:5px;
+font-size:14px;
+}
+
+/* NAVIGATION */
 
 .bottom-nav{
 position:fixed;
 bottom:0;
 left:0;
 right:0;
+height:70px;
 background:white;
 display:flex;
 justify-content:space-around;
-padding:12px;
-box-shadow:0 -3px 15px rgba(0,0,0,.1);
+align-items:center;
+box-shadow:0 -4px 15px rgba(0,0,0,.08);
 }
 
-.bottom-nav div{
-text-align:center;
-font-size:14px;
-font-weight:bold;
-}.dark-mode{
+.bottom-nav a{
+text-decoration:none;
+color:#666;
+display:flex;
+flex-direction:column;
+align-items:center;
+font-size:20px;
+}
+
+.bottom-nav span{
+font-size:12px;
+margin-top:2px;
+}
+
+.bottom-nav .active{
+color:#ff9800;
+font-weight:600;
+}
+
+/* DARK MODE */
+
+body.dark{
 background:#121212;
 color:white;
 }
 
-.dark-mode .deity-card,
-.dark-mode .stat,
-.dark-mode .bottom-nav{
-background:#1e1e1e;
+body.dark .deity-card,
+body.dark .stat-card,
+body.dark .bottom-nav{
+background:#1f1f1f;
 color:white;
 }
 
-.dark-mode select{
+body.dark select{
 background:#2b2b2b;
 color:white;
 border:1px solid #444;
+}
+
+body.dark .theme-btn{
+background:#2b2b2b;
+color:white;
+}
+
+/* MOBILE */
+
+@media(max-width:480px){
+
+.gurudev{
+width:100px;
+height:100px;
+}
+
+.hero h1{
+font-size:24px;
+}
+
+.hero h2{
+font-size:20px;
+}
+
+.deity-img{
+height:280px;
+}
+
 }
