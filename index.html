@@ -6,15 +6,19 @@
 <title>BhajanMarg Naam Jap</title>
 
 <link rel="stylesheet" href="style.css">
-</head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+</head>
 <body>
+
+<!-- HERO -->
 
 <header class="hero">
 
-<button id="themeBtn">🌙</button>
+<button id="themeBtn" class="theme-btn">🌙</button>
 
-<img src="assets/assets/gurudev.jpg" class="gurudev">
+<img src="assets/assets/gurudev.jpg" class="gurudev" alt="Gurudev">
 
 <h1>📿 BhajanMarg Naam Jap</h1>
 
@@ -24,6 +28,8 @@
 
 </header>
 
+<!-- MAIN -->
+
 <main>
 
 <div class="deity-card">
@@ -31,18 +37,21 @@
 <img
 id="deityImage"
 src="assets/assets/radha.jpg"
-class="deity-img">
+class="deity-img"
+alt="Deity">
+
+<h3>नाम चुनें</h3>
 
 <select id="naamSelect">
 
-<option value="radha">राधा</option>
+<option value="radha">राधा रानी</option>
 <option value="krishna">श्री कृष्ण</option>
 <option value="ram">श्री राम</option>
-<option value="shiv">शिव</option>
-<option value="hanuman">हनुमान</option>
-<option value="durga">दुर्गा</option>
-<option value="ganesh">गणेश</option>
-<option value="vishnu">विष्णु</option>
+<option value="shiv">महादेव</option>
+<option value="hanuman">हनुमान जी</option>
+<option value="durga">माँ दुर्गा</option>
+<option value="ganesh">श्री गणेश</option>
+<option value="vishnu">श्री विष्णु</option>
 
 </select>
 
@@ -52,31 +61,61 @@ class="deity-img">
 
 </div>
 
+<!-- STATS -->
+
 <div class="stats">
 
-<div class="stat">
-<h3>0</h3>
-<p>Active Users</p>
+<div class="stat-card">
+
+<div class="stat-number">
+0
 </div>
 
-<div class="stat">
-<h3>0</h3>
-<p>Total Jap</p>
+<div class="stat-title">
+Active Users
+</div>
+
+</div>
+
+<div class="stat-card">
+
+<div class="stat-number">
+0
+</div>
+
+<div class="stat-title">
+Total Jap
+</div>
+
 </div>
 
 </div>
 
 </main>
 
+<!-- NAVIGATION -->
+
 <nav class="bottom-nav">
 
-<div>🏠<br>Home</div>
+<a href="#" class="active">
+🏠
+<span>Home</span>
+</a>
 
-<div>📿<br>Jap</div>
+<a href="#">
+📿
+<span>Jap</span>
+</a>
 
-<div>🏆<br>Rank</div>
+<a href="#">
+🏆
+<span>Rank</span>
+</a>
 
-<div>👤<br>Profile</div>
+<a href="#">
+👤
+<span>Profile</span>
+</a>
 
 </nav>
 
