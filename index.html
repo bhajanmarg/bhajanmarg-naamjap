@@ -3,184 +3,168 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>BhajanMarg Naam Jap</title>
 
 <style>
-
 :root{
- --bg:#FFF8E8;
- --card:#FFFFFF;
- --text:#222;
- --gold1:#FFD54F;
- --gold2:#FFB300;
- --gold3:#FF8F00;
+--bg:#fdf8ee;
+--card:#ffffff;
+--text:#222;
+--gold:#d4af37;
+--orange:#ff9800;
 }
 
 .dark{
- --bg:#121212;
- --card:#1E1E1E;
- --text:#F5F5F5;
+--bg:#121212;
+--card:#1e1e1e;
+--text:#f5f5f5;
 }
 
 *{
- margin:0;
- padding:0;
- box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
- background:var(--bg);
- color:var(--text);
- font-family:Arial,sans-serif;
- min-height:100vh;
- padding-bottom:90px;
- transition:.3s;
+background:var(--bg);
+color:var(--text);
+transition:.3s;
+padding-bottom:80px;
 }
 
 .header{
- background:linear-gradient(
- 135deg,
- var(--gold1),
- var(--gold2),
- var(--gold3)
- );
- padding:30px 20px;
- text-align:center;
- border-bottom-left-radius:30px;
- border-bottom-right-radius:30px;
+background:linear-gradient(135deg,#ffd54f,#ffb300);
+padding:20px 15px;
+text-align:center;
+border-bottom-left-radius:20px;
+border-bottom-right-radius:20px;
 }
 
 .gurudev{
- width:120px;
- height:120px;
- border-radius:50%;
- object-fit:cover;
- border:4px solid #fff;
- box-shadow:0 5px 20px rgba(0,0,0,.2);
+width:90px;
+height:90px;
+border-radius:50%;
+object-fit:cover;
+border:3px solid white;
 }
 
-.app-title{
- margin-top:15px;
- font-size:28px;
- font-weight:bold;
+.title{
+font-size:28px;
+font-weight:bold;
+margin-top:10px;
 }
 
 .quote{
- margin-top:10px;
- font-size:15px;
+margin-top:5px;
+font-size:14px;
 }
 
 .dark-btn{
- margin-top:15px;
- border:none;
- padding:10px 18px;
- border-radius:10px;
- cursor:pointer;
- font-weight:bold;
+margin-top:10px;
+padding:8px 15px;
+border:none;
+border-radius:10px;
+cursor:pointer;
 }
 
 .container{
- padding:20px;
- max-width:600px;
- margin:auto;
+max-width:500px;
+margin:auto;
+padding:15px;
 }
 
 .card{
- background:var(--card);
- border-radius:20px;
- padding:20px;
- box-shadow:0 3px 15px rgba(0,0,0,.08);
- margin-bottom:20px;
+background:var(--card);
+border-radius:20px;
+padding:20px;
+box-shadow:0 2px 12px rgba(0,0,0,.1);
 }
 
 .deity-img{
- width:220px;
- height:220px;
- object-fit:cover;
- border-radius:20px;
- display:block;
- margin:auto;
- box-shadow:0 4px 20px rgba(0,0,0,.15);
+width:220px;
+height:220px;
+object-fit:cover;
+border-radius:20px;
+display:block;
+margin:auto;
 }
 
 .label{
- text-align:center;
- font-size:20px;
- margin:15px 0;
- font-weight:bold;
+text-align:center;
+font-size:22px;
+font-weight:bold;
+margin:15px 0;
 }
 
 select{
- width:100%;
- padding:15px;
- font-size:17px;
- border-radius:12px;
- border:1px solid #ddd;
+width:100%;
+padding:14px;
+font-size:16px;
+border-radius:12px;
+border:1px solid #ccc;
 }
 
 .start-btn{
- width:100%;
- margin-top:15px;
- padding:16px;
- border:none;
- border-radius:12px;
- background:linear-gradient(
- 135deg,
- #FFB300,
- #FF8F00
- );
- color:white;
- font-size:18px;
- font-weight:bold;
- cursor:pointer;
+width:100%;
+margin-top:15px;
+padding:15px;
+border:none;
+border-radius:12px;
+font-size:18px;
+font-weight:bold;
+background:linear-gradient(135deg,#ffb300,#ff8f00);
+color:white;
+cursor:pointer;
 }
 
 .stats{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:12px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-top:15px;
 }
 
 .stat{
- background:var(--card);
- border-radius:15px;
- padding:15px;
- text-align:center;
- box-shadow:0 3px 10px rgba(0,0,0,.08);
+background:var(--card);
+padding:15px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 2px 10px rgba(0,0,0,.08);
 }
 
-.stat-number{
- font-size:24px;
- font-weight:bold;
- color:#FF8F00;
+.stat-num{
+font-size:24px;
+font-weight:bold;
+color:#ff9800;
 }
 
 .bottom-nav{
- position:fixed;
- bottom:0;
- left:0;
- right:0;
- background:var(--card);
- display:flex;
- justify-content:space-around;
- padding:12px;
- box-shadow:0 -2px 12px rgba(0,0,0,.15);
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+background:var(--card);
+display:flex;
+justify-content:space-around;
+padding:12px;
+box-shadow:0 -2px 12px rgba(0,0,0,.1);
 }
 
-.nav-item{
- text-align:center;
- font-size:14px;
+.nav{
+text-align:center;
+font-size:14px;
 }
 
 .footer{
- text-align:center;
- margin-top:15px;
- opacity:.7;
+text-align:center;
+margin-top:15px;
+opacity:.7;
 }
-
 </style>
 </head>
+
 <body>
 
 <div class="header">
@@ -190,7 +174,7 @@ src="assets/assets/gurudev.jpg"
 class="gurudev"
 alt="Gurudev">
 
-<div class="app-title">
+<div class="title">
 📿 BhajanMarg Naam Jap
 </div>
 
@@ -218,16 +202,23 @@ alt="Deity">
 नाम चुनें
 </div>
 
-<select id="naam">
+<select id="naam" onchange="changeImage()">
 
-<option>राधा</option>
-<option>श्री कृष्ण</option>
-<option>श्री राम</option>
-<option>शिव</option>
-<option>हनुमान</option>
-<option>दुर्गा</option>
-<option>गणेश</option>
-<option>विष्णु</option>
+<option value="radha">राधा</option>
+
+<option value="krishna">श्री कृष्ण</option>
+
+<option value="ram">श्री राम</option>
+
+<option value="shiv">शिव</option>
+
+<option value="hanuman">हनुमान</option>
+
+<option value="durga">दुर्गा</option>
+
+<option value="ganesh">गणेश</option>
+
+<option value="vishnu">विष्णु</option>
 
 </select>
 
@@ -244,12 +235,12 @@ onclick="startJap()">
 <div class="stats">
 
 <div class="stat">
-<div class="stat-number">0</div>
+<div class="stat-num">0</div>
 <div>Active Users</div>
 </div>
 
 <div class="stat">
-<div class="stat-number">0</div>
+<div class="stat-num">0</div>
 <div>Total Jap</div>
 </div>
 
@@ -263,59 +254,49 @@ BhajanMarg.co
 
 <div class="bottom-nav">
 
-<div class="nav-item">
-🏠<br>Home
-</div>
+<div class="nav">🏠<br>Home</div>
 
-<div class="nav-item">
-📿<br>Jap
-</div>
+<div class="nav">📿<br>Jap</div>
 
-<div class="nav-item">
-🏆<br>Rank
-</div>
+<div class="nav">🏆<br>Rank</div>
 
-<div class="nav-item">
-👤<br>Profile
-</div>
+<div class="nav">👤<br>Profile</div>
 
 </div>
 
 <script>
 
-const deityImages = {
+function changeImage(){
 
-const deityImages = {
+let value =
+document.getElementById("naam").value;
 
-"राधा":"assets/assets/radha.jpg",
+let image =
+document.getElementById("deityPreview");
 
-"श्री कृष्ण":"assets/assets/krishna.jpg",
+const paths = {
 
-"श्री राम":"assets/assets/ram.jpg",
+radha:"assets/assets/radha.jpg",
 
-"शिव":"assets/assets/shiv.jpg",
+krishna:"assets/assets/krishna.jpg",
 
-"हनुमान":"assets/assets/Hanuman.jpg",
+ram:"assets/assets/ram.jpg",
 
-"दुर्गा":"assets/assets/Durga.jpg",
+shiv:"assets/assets/shiv.jpg",
 
-"गणेश":"assets/assets/Ganesh.jpg",
+hanuman:"assets/assets/Hanuman.jpg",
 
-"विष्णु":"assets/assets/vishnu.jpg"
+durga:"assets/assets/Durga.jpg",
+
+ganesh:"assets/assets/Ganesh.jpg",
+
+vishnu:"assets/assets/vishnu.jpg"
 
 };
 
-};
+image.src = paths[value];
 
-document
-.getElementById("naam")
-.addEventListener("change",function(){
-
-document
-.getElementById("deityPreview")
-.src = deityImages[this.value];
-
-});
+}
 
 function startJap(){
 
@@ -346,6 +327,8 @@ document.body.classList.contains("dark")
 if(localStorage.getItem("theme")==="dark"){
 document.body.classList.add("dark");
 }
+
+changeImage();
 
 </script>
 
