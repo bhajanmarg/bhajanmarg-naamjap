@@ -9,11 +9,12 @@
 <style>
 
 :root{
- --primary:#7B001C;
- --gold:#D4AF37;
  --bg:#FFF8E8;
- --card:#ffffff;
+ --card:#FFFFFF;
  --text:#222;
+ --gold1:#FFD54F;
+ --gold2:#FFB300;
+ --gold3:#FF8F00;
 }
 
 .dark{
@@ -29,134 +30,196 @@
 }
 
 body{
- font-family:Arial,sans-serif;
  background:var(--bg);
  color:var(--text);
+ font-family:Arial,sans-serif;
+ min-height:100vh;
+ padding-bottom:90px;
  transition:.3s;
 }
 
-header{
- background:linear-gradient(135deg,#7B001C,#4A0011);
- color:white;
- padding:25px 15px;
+.header{
+ background:linear-gradient(
+ 135deg,
+ var(--gold1),
+ var(--gold2),
+ var(--gold3)
+ );
+ padding:30px 20px;
  text-align:center;
+ border-bottom-left-radius:30px;
+ border-bottom-right-radius:30px;
 }
 
-.logo{
- font-size:32px;
- margin-bottom:10px;
+.gurudev{
+ width:120px;
+ height:120px;
+ border-radius:50%;
+ object-fit:cover;
+ border:4px solid #fff;
+ box-shadow:0 5px 20px rgba(0,0,0,.2);
 }
 
-.subtitle{
- opacity:.9;
+.app-title{
+ margin-top:15px;
+ font-size:28px;
+ font-weight:bold;
 }
 
-.topbar{
- display:flex;
- justify-content:flex-end;
- padding:15px;
+.quote{
+ margin-top:10px;
+ font-size:15px;
 }
 
-.mode-btn{
+.dark-btn{
+ margin-top:15px;
  border:none;
- background:var(--gold);
- padding:10px 15px;
+ padding:10px 18px;
  border-radius:10px;
  cursor:pointer;
  font-weight:bold;
 }
 
 .container{
- max-width:500px;
- margin:auto;
  padding:20px;
+ max-width:600px;
+ margin:auto;
 }
 
 .card{
  background:var(--card);
- padding:25px;
- border-radius:18px;
- box-shadow:0 3px 12px rgba(0,0,0,.12);
+ border-radius:20px;
+ padding:20px;
+ box-shadow:0 3px 15px rgba(0,0,0,.08);
+ margin-bottom:20px;
 }
 
-.title{
+.deity-img{
+ width:220px;
+ height:220px;
+ object-fit:cover;
+ border-radius:20px;
+ display:block;
+ margin:auto;
+ box-shadow:0 4px 20px rgba(0,0,0,.15);
+}
+
+.label{
  text-align:center;
- margin-bottom:20px;
+ font-size:20px;
+ margin:15px 0;
+ font-weight:bold;
 }
 
 select{
  width:100%;
- padding:14px;
- font-size:18px;
+ padding:15px;
+ font-size:17px;
  border-radius:12px;
- border:2px solid #ddd;
+ border:1px solid #ddd;
 }
 
 .start-btn{
  width:100%;
- margin-top:20px;
- background:var(--primary);
- color:white;
+ margin-top:15px;
+ padding:16px;
  border:none;
- padding:15px;
  border-radius:12px;
+ background:linear-gradient(
+ 135deg,
+ #FFB300,
+ #FF8F00
+ );
+ color:white;
  font-size:18px;
+ font-weight:bold;
  cursor:pointer;
 }
 
 .stats{
- margin-top:25px;
  display:grid;
  grid-template-columns:1fr 1fr;
- gap:10px;
+ gap:12px;
 }
 
 .stat{
  background:var(--card);
+ border-radius:15px;
  padding:15px;
- border-radius:12px;
  text-align:center;
+ box-shadow:0 3px 10px rgba(0,0,0,.08);
 }
 
-.number{
+.stat-number{
  font-size:24px;
  font-weight:bold;
- color:var(--primary);
+ color:#FF8F00;
+}
+
+.bottom-nav{
+ position:fixed;
+ bottom:0;
+ left:0;
+ right:0;
+ background:var(--card);
+ display:flex;
+ justify-content:space-around;
+ padding:12px;
+ box-shadow:0 -2px 12px rgba(0,0,0,.15);
+}
+
+.nav-item{
+ text-align:center;
+ font-size:14px;
 }
 
 .footer{
  text-align:center;
- margin-top:30px;
- opacity:.8;
- font-size:14px;
+ margin-top:15px;
+ opacity:.7;
 }
 
 </style>
 </head>
-
 <body>
 
-<div class="topbar">
-<button class="mode-btn" onclick="toggleDark()">
-🌙 Dark Mode
-</button>
+<div class="header">
+
+<img
+src="assets/assets/gurudev.jpg"
+class="gurudev"
+alt="Gurudev">
+
+<div class="app-title">
+📿 BhajanMarg Naam Jap
 </div>
 
-<header>
-<div class="logo">📿 BhajanMarg</div>
-<h1>Naam Jap</h1>
-<p class="subtitle">
+<div class="quote">
 हरि नाम ही जीवन का आधार है
-</p>
-</header>
+</div>
+
+<button class="dark-btn" onclick="toggleDark()">
+🌙 Dark Mode
+</button>
+
+</div>
 
 <div class="container">
 
 <div class="card">
 
-<h2 class="title">नाम चुनें</h2>
+<img
+id="deityPreview"
+class="deity-img"
+src="assets/assets/radha.jpg"
+alt="Deity">
+
+<div class="label">
+नाम चुनें
+</div>
 
 <select id="naam">
+
 <option>राधा</option>
 <option>श्री कृष्ण</option>
 <option>श्री राम</option>
@@ -165,10 +228,15 @@ select{
 <option>दुर्गा</option>
 <option>गणेश</option>
 <option>विष्णु</option>
+
 </select>
 
-<button class="start-btn" onclick="startJap()">
+<button
+class="start-btn"
+onclick="startJap()">
+
 📿 जाप प्रारम्भ करें
+
 </button>
 
 </div>
@@ -176,12 +244,12 @@ select{
 <div class="stats">
 
 <div class="stat">
-<div class="number">0</div>
+<div class="stat-number">0</div>
 <div>Active Users</div>
 </div>
 
 <div class="stat">
-<div class="number">0</div>
+<div class="stat-number">0</div>
 <div>Total Jap</div>
 </div>
 
@@ -193,12 +261,70 @@ BhajanMarg.co
 
 </div>
 
+<div class="bottom-nav">
+
+<div class="nav-item">
+🏠<br>Home
+</div>
+
+<div class="nav-item">
+📿<br>Jap
+</div>
+
+<div class="nav-item">
+🏆<br>Rank
+</div>
+
+<div class="nav-item">
+👤<br>Profile
+</div>
+
+</div>
+
 <script>
 
+const deityImages = {
+
+"राधा":"assets/assets/radha.jpg",
+
+"श्री कृष्ण":"assets/assets/krishna.jpg",
+
+"श्री राम":"assets/assets/ram.jpg",
+
+"शिव":"assets/assets/shiv.jpg",
+
+"हनुमान":"assets/assets/hanuman.jpg",
+
+"दुर्गा":"assets/assets/durga.jpg",
+
+"गणेश":"assets/assets/ganesh.jpg",
+
+"विष्णु":"assets/assets/vishnu.jpg"
+
+};
+
+document
+.getElementById("naam")
+.addEventListener("change",function(){
+
+document
+.getElementById("deityPreview")
+.src = deityImages[this.value];
+
+});
+
 function startJap(){
-let naam=document.getElementById("naam").value;
-localStorage.setItem("selectedNaam",naam);
+
+let naam =
+document.getElementById("naam").value;
+
+localStorage.setItem(
+"selectedNaam",
+naam
+);
+
 window.location.href="jap.html";
+
 }
 
 function toggleDark(){
