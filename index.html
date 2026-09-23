@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BhajanMarg Naam Jap</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#fff8e8;
+    margin:0;
+    text-align:center;
+}
+
+header{
+    background:#7b001c;
+    color:white;
+    padding:20px;
+}
+
+.container{
+    padding:20px;
+}
+
+select{
+    width:90%;
+    max-width:400px;
+    padding:12px;
+    font-size:18px;
+}
+
+button{
+    background:#7b001c;
+    color:white;
+    border:none;
+    padding:12px 30px;
+    margin-top:20px;
+    font-size:18px;
+    border-radius:8px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>BhajanMarg Naam Jap</h1>
+<p>हरि नाम ही जीवन का आधार है</p>
+</header>
+
+<div class="container">
+
+<h2>नाम चुनें</h2>
+
+<select id="naam">
+<option>राधा</option>
+<option>श्री कृष्ण</option>
+<option>श्री राम</option>
+<option>शिव</option>
+<option>हनुमान</option>
+<option>दुर्गा</option>
+<option>गणेश</option>
+<option>विष्णु</option>
+</select>
+
+<br>
+
+<button onclick="startJap()">
+जाप प्रारम्भ करें
+</button>
+
+</div>
+
+<script>
+function startJap(){
+let naam=document.getElementById("naam").value;
+
+localStorage.setItem("selectedNaam",naam);
+
+window.location.href="jap.html";
+}
+</script>
+
+</body>
+</html>
