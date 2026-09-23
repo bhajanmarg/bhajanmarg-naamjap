@@ -6,12 +6,15 @@
 <title>BhajanMarg Naam Jap</title>
 
 <style>
+
 :root{
---bg:#fdf8ee;
+--bg:#f8f4ea;
 --card:#ffffff;
 --text:#222;
 --gold:#d4af37;
---orange:#ff9800;
+--gold2:#f4c95d;
+--accent:#ff9800;
+--shadow:0 8px 20px rgba(0,0,0,.08);
 }
 
 .dark{
@@ -31,113 +34,134 @@ body{
 background:var(--bg);
 color:var(--text);
 transition:.3s;
-padding-bottom:80px;
+padding-bottom:85px;
 }
 
-.header{
-background:linear-gradient(135deg,#ffd54f,#ffb300);
-padding:20px 15px;
+.topbar{
+display:flex;
+justify-content:flex-end;
+padding:12px;
+}
+
+.theme-btn{
+border:none;
+background:var(--card);
+box-shadow:var(--shadow);
+width:42px;
+height:42px;
+border-radius:50%;
+cursor:pointer;
+font-size:18px;
+}
+
+.hero{
 text-align:center;
-border-bottom-left-radius:20px;
-border-bottom-right-radius:20px;
+padding:5px 20px 15px;
 }
 
 .gurudev{
-width:90px;
-height:90px;
+width:75px;
+height:75px;
 border-radius:50%;
 object-fit:cover;
-border:3px solid white;
+border:3px solid var(--gold);
+box-shadow:var(--shadow);
 }
 
-.title{
-font-size:28px;
-font-weight:bold;
+.app-title{
 margin-top:10px;
+font-size:24px;
+font-weight:700;
 }
 
-.quote{
+.subtitle{
 margin-top:5px;
 font-size:14px;
-}
-
-.dark-btn{
-margin-top:10px;
-padding:8px 15px;
-border:none;
-border-radius:10px;
-cursor:pointer;
+opacity:.8;
 }
 
 .container{
-max-width:500px;
+max-width:550px;
 margin:auto;
 padding:15px;
 }
 
 .card{
 background:var(--card);
-border-radius:20px;
-padding:20px;
-box-shadow:0 2px 12px rgba(0,0,0,.1);
+border-radius:24px;
+padding:18px;
+box-shadow:var(--shadow);
 }
 
-.deity-img{
-width:220px;
-height:220px;
+.deity{
+width:100%;
+max-width:280px;
+height:280px;
 object-fit:cover;
-border-radius:20px;
+border-radius:22px;
 display:block;
 margin:auto;
 }
 
 .label{
 text-align:center;
-font-size:22px;
+font-size:20px;
 font-weight:bold;
-margin:15px 0;
+margin:18px 0 12px;
 }
 
 select{
 width:100%;
 padding:14px;
+border-radius:14px;
+border:1px solid #ddd;
 font-size:16px;
-border-radius:12px;
-border:1px solid #ccc;
+background:white;
 }
 
 .start-btn{
 width:100%;
-margin-top:15px;
-padding:15px;
+margin-top:14px;
+padding:16px;
 border:none;
-border-radius:12px;
+border-radius:14px;
+background:linear-gradient(
+135deg,
+#d4af37,
+#ff9800
+);
+color:white;
 font-size:18px;
 font-weight:bold;
-background:linear-gradient(135deg,#ffb300,#ff8f00);
-color:white;
 cursor:pointer;
 }
 
 .stats{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:10px;
-margin-top:15px;
+gap:12px;
+margin-top:16px;
 }
 
 .stat{
 background:var(--card);
-padding:15px;
-border-radius:15px;
+padding:18px;
+border-radius:18px;
 text-align:center;
-box-shadow:0 2px 10px rgba(0,0,0,.08);
+box-shadow:var(--shadow);
 }
 
-.stat-num{
-font-size:24px;
+.num{
+font-size:26px;
 font-weight:bold;
 color:#ff9800;
+}
+
+.footer{
+text-align:center;
+margin-top:15px;
+font-size:14px;
+opacity:.7;
 }
 
 .bottom-nav{
@@ -149,42 +173,43 @@ background:var(--card);
 display:flex;
 justify-content:space-around;
 padding:12px;
-box-shadow:0 -2px 12px rgba(0,0,0,.1);
+box-shadow:0 -4px 15px rgba(0,0,0,.08);
 }
 
 .nav{
 text-align:center;
-font-size:14px;
+font-size:13px;
 }
 
-.footer{
-text-align:center;
-margin-top:15px;
-opacity:.7;
+.dark select{
+background:#2a2a2a;
+color:white;
+border:1px solid #444;
 }
+
 </style>
 </head>
 
 <body>
 
-<div class="header">
+<div class="topbar">
+<button class="theme-btn" onclick="toggleTheme()">🌙</button>
+</div>
+
+<div class="hero">
 
 <img
 src="assets/assets/gurudev.jpg"
 class="gurudev"
 alt="Gurudev">
 
-<div class="title">
+<div class="app-title">
 📿 BhajanMarg Naam Jap
 </div>
 
-<div class="quote">
+<div class="subtitle">
 हरि नाम ही जीवन का आधार है
 </div>
-
-<button class="dark-btn" onclick="toggleDark()">
-🌙 Dark Mode
-</button>
 
 </div>
 
@@ -193,8 +218,8 @@ alt="Gurudev">
 <div class="card">
 
 <img
-id="deityPreview"
-class="deity-img"
+id="deityImage"
+class="deity"
 src="assets/assets/radha.jpg"
 alt="Deity">
 
@@ -205,19 +230,12 @@ alt="Deity">
 <select id="naam" onchange="changeImage()">
 
 <option value="radha">राधा</option>
-
 <option value="krishna">श्री कृष्ण</option>
-
 <option value="ram">श्री राम</option>
-
 <option value="shiv">शिव</option>
-
 <option value="hanuman">हनुमान</option>
-
 <option value="durga">दुर्गा</option>
-
 <option value="ganesh">गणेश</option>
-
 <option value="vishnu">विष्णु</option>
 
 </select>
@@ -235,12 +253,12 @@ onclick="startJap()">
 <div class="stats">
 
 <div class="stat">
-<div class="stat-num">0</div>
+<div class="num">0</div>
 <div>Active Users</div>
 </div>
 
 <div class="stat">
-<div class="stat-num">0</div>
+<div class="num">0</div>
 <div>Total Jap</div>
 </div>
 
@@ -254,65 +272,64 @@ BhajanMarg.co
 
 <div class="bottom-nav">
 
-<div class="nav">🏠<br>Home</div>
+<div class="nav">
+🏠<br>Home
+</div>
 
-<div class="nav">📿<br>Jap</div>
+<div class="nav">
+📿<br>Jap
+</div>
 
-<div class="nav">🏆<br>Rank</div>
+<div class="nav">
+🏆<br>Rank
+</div>
 
-<div class="nav">👤<br>Profile</div>
+<div class="nav">
+👤<br>Profile
+</div>
 
 </div>
 
 <script>
 
-function changeImage(){
-
-let value =
-document.getElementById("naam").value;
-
-let image =
-document.getElementById("deityPreview");
-
-const paths = {
+const images = {
 
 radha:"assets/assets/radha.jpg",
-
 krishna:"assets/assets/krishna.jpg",
-
 ram:"assets/assets/ram.jpg",
-
 shiv:"assets/assets/shiv.jpg",
-
-hanuman:"assets/assets/Hanuman.jpg",
-
-durga:"assets/assets/Durga.jpg",
-
-ganesh:"assets/assets/Ganesh.jpg",
-
+hanuman:"assets/assets/hanuman.jpg",
+durga:"assets/assets/durga.jpg",
+ganesh:"assets/assets/ganesh.jpg",
 vishnu:"assets/assets/vishnu.jpg"
 
 };
 
-image.src = paths[value];
+function changeImage(){
+
+let selected =
+document.getElementById("naam").value;
+
+document.getElementById("deityImage").src =
+images[selected];
 
 }
 
 function startJap(){
 
-let naam =
+let selected =
 document.getElementById("naam").value;
 
 localStorage.setItem(
 "selectedNaam",
-naam
+selected
 );
 
 window.location.href="jap.html";
 
 }
 
-function toggleDark(){
+function toggleTheme(){
 
 document.body.classList.toggle("dark");
 
@@ -327,8 +344,6 @@ document.body.classList.contains("dark")
 if(localStorage.getItem("theme")==="dark"){
 document.body.classList.add("dark");
 }
-
-changeImage();
 
 </script>
 
