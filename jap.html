@@ -230,9 +230,25 @@ count
 
 updateCount();
 
+const countBox =
+document.getElementById("count");
+
+const deityImg =
+document.getElementById("japImage");
+
+countBox.classList.add("animate");
+deityImg.classList.add("pulse");
+
+setTimeout(()=>{
+countBox.classList.remove("animate");
+deityImg.classList.remove("pulse");
+},200);
+
 if(navigator.vibrate){
-navigator.vibrate(50);
+navigator.vibrate([80,40,80]);
 }
+
+});
 
 });
 
