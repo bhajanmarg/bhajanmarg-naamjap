@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Naam Jap</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+.jap-page{
+max-width:500px;
+margin:auto;
+padding:20px 15px 100px;
+text-align:center;
+}
+
+.back-btn{
+display:inline-block;
+margin-bottom:15px;
+padding:10px 18px;
+background:#ff9800;
+color:white;
+text-decoration:none;
+border-radius:12px;
+}
+
+.jap-image{
+width:280px;
+height:280px;
+object-fit:cover;
+border-radius:25px;
+display:block;
+margin:auto;
+box-shadow:0 8px 20px rgba(0,0,0,.12);
+}
+
+.jap-name{
+margin-top:15px;
+font-size:28px;
+font-weight:700;
+}
+
+.counter-card{
+background:white;
+margin-top:20px;
+padding:25px;
+border-radius:25px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.count{
+font-size:60px;
+font-weight:700;
+color:#ff9800;
+}
+
+.mala{
+font-size:20px;
+margin-top:10px;
+}
+
+.jap-btn{
+width:100%;
+padding:18px;
+margin-top:20px;
+border:none;
+border-radius:18px;
+background:linear-gradient(135deg,#ff9800,#ff6f00);
+color:white;
+font-size:22px;
+font-weight:700;
+cursor:pointer;
+}
+
+.reset-btn{
+width:100%;
+padding:15px;
+margin-top:10px;
+border:none;
+border-radius:14px;
+background:#e53935;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+</style>
+
+</head>
+<body>
+
+<div class="jap-page">
+
+<a href="index.html" class="back-btn">
+← Home
+</a>
+
+<img id="japImage"
+class="jap-image"
+src="assets/assets/radha.jpg">
+
+<div id="japName"
+class="jap-name">
+राधा रानी
+</div>
+
+<div class="counter-card">
+
+<div class="count" id="count">
+0
+</div>
+
+<div class="mala" id="mala">
+0 / 108
+</div>
+
+<button class="jap-btn" id="japBtn">
+📿 एक जाप
+</button>
+
+<button class="reset-btn" id="resetBtn">
+Reset Count
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+const deityImages = {
+radha:"assets/assets/radha.jpg",
+krishna:"assets/assets/krishna.jpg",
+ram:"assets/assets/ram.jpg",
+shiv:"assets/assets/shiv.jpg",
+hanuman:"assets/assets/hanuman.jpg",
+durga:"assets/assets/durga.jpg",
+ganesh:"assets/assets/ganesh.jpg",
+vishnu:"assets/assets/vishnu.jpg"
+};
+
+const deityNames = {
+radha:"राधा रानी",
+krishna:"श्री कृष्ण",
+ram:"श्री राम",
+shiv:"महादेव",
+hanuman:"हनुमान जी",
+durga:"माँ दुर्गा",
+ganesh:"श्री गणेश",
+vishnu:"श्री विष्णु"
+};
+
+let deity =
+localStorage.getItem("selectedDeity") || "radha";
+
+document.getElementById("japImage").src =
+deityImages[deity];
+
+document.getElementById("japName").innerText =
+deityNames[deity];
+
+let count =
+parseInt(localStorage.getItem("japCount")) || 0;
+
+const countEl =
+document.getElementById("count");
+
+const malaEl =
+document.getElementById("mala");
+
+function updateCount(){
+countEl.innerText = count;
+malaEl.innerText = (count % 108) + " / 108";
+}
+
+updateCount();
+
+document.getElementById("japBtn")
+.addEventListener("click",()=>{
+
+count++;
+
+localStorage.setItem(
+"japCount",
+count
+);
+
+updateCount();
+
+if(navigator.vibrate){
+navigator.vibrate(50);
+}
+
+});
+
+document.getElementById("resetBtn")
+.addEventListener("click",()=>{
+
+if(confirm("Count reset karna hai?")){
+
+count = 0;
+
+localStorage.setItem(
+"japCount",
+0
+);
+
+updateCount();
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
